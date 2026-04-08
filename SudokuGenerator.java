@@ -30,7 +30,7 @@ public class SudokuGenerator {
         return false;
     }
 
-    // checks for validity
+    // Checks for validity
     public static boolean check(int n, int row, int col) {
         for (int i = 0; i < 9; i++) {
             if (i != col && board[row][i] == n) return true;
