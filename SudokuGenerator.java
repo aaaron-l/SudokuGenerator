@@ -2,7 +2,7 @@ public class SudokuGenerator {
     private static int[][] board = new int[9][9];
 
     public SudokuGenerator() {
-        generate(1, 0);
+        generate(0, 0);
     }
 
     // generates the board
