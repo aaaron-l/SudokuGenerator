@@ -2,31 +2,31 @@ public class SudokuGenerator {
     private static int[][] board = new int[9][9];
 
     public SudokuGenerator() {
-        generate(0, 0);
+        generate(1, 0);
     }
 
     // generates the board
-    public static boolean generate(int i, int j) {
-        if (i == 9) return true;
+    public static boolean generate(int row, int col) {
+        if (row > 8) return true;
 
-        int nextRow = i;
-        int nextCol = j+1;
+        int nextRow = row;
+        int nextCol = col+1;
 
-        if (j == 8) {
-            nextRow = i+1;
+        if (col == 8) {
+            nextRow = row+1;
             nextCol = 0;
         }
 
         int n = (int)(Math.random()*9);
 
         for (int k = 0; k < 9; k++) {
-            board[i][j] = (n + k) % 9 + 1;
-            if (!check(board[i][j], i, j)) {
+            board[row][col] = (n + k) % 9 + 1;
+            if (!check(board[row][col], row, col)) {
                 if (generate(nextRow, nextCol)) return true;
             }
         }
 
-        board[i][j] = 0;
+        board[row][col] = 0;
         return false;
     }
 
@@ -52,6 +52,7 @@ public class SudokuGenerator {
         return false;
     }
 
+    // toString
     public String toString() {
         String result = "";
 
