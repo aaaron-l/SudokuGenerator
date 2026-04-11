@@ -1,5 +1,5 @@
 public class SudokuGenerator {
-    private static int[][] board = new int[9][9];
+    protected static int[][] board = new int[9][9];
 
     public SudokuGenerator() {
         generate(0, 0);
@@ -50,6 +50,10 @@ public class SudokuGenerator {
         }
 
         return false;
+    }
+
+    public int[][] getBoard() {
+        return board;
     }
 
     public String toString() {
