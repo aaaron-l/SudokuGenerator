@@ -7,13 +7,16 @@ public class Masked {
         this.val = val;
     }
 
-// getters
+    // getters
     public int getRow() {return row;}
     public int getCol() {return col;}
     public int getVal() {return val;}
 
-// @Override
-    public boolean equals(Masked other) {
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Masked)) return false;
+        
+        Masked other = (Masked)o;
         if (other.getRow() == row && other.getCol() == col) return true;
         return false;
     }
