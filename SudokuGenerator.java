@@ -1,37 +1,37 @@
 public class SudokuGenerator {
-    protected static int[][] board = new int[9][9];
+    private int[][] board = new int[9][9];
 
     public SudokuGenerator() {
         generate(0, 0);
     }
 
     // generates the board
-    public static boolean generate(int i, int j) {
-        if (i == 9) return true;
+    public boolean generate(int row, int col) {
+        if (row > 8) return true;
 
-        int nextRow = i;
-        int nextCol = j+1;
+        int nextRow = row;
+        int nextCol = col+1;
 
-        if (j == 8) {
-            nextRow = i+1;
+        if (col == 8) {
+            nextRow = row+1;
             nextCol = 0;
         }
 
         int n = (int)(Math.random()*9);
 
         for (int k = 0; k < 9; k++) {
-            board[i][j] = (n + k) % 9 + 1;
-            if (!check(board[i][j], i, j)) {
+            board[row][col] = (n + k) % 9 + 1;
+            if (!check(board[row][col], row, col)) {
                 if (generate(nextRow, nextCol)) return true;
             }
         }
 
-        board[i][j] = 0;
+        board[row][col] = 0;
         return false;
     }
 
-    // checks for validity
-    public static boolean check(int n, int row, int col) {
+    // Checks for validity
+    public boolean check(int n, int row, int col) {
         for (int i = 0; i < 9; i++) {
             if (i != col && board[row][i] == n) return true;
             if (i != row && board[i][col] == n) return true;
@@ -39,7 +39,7 @@ public class SudokuGenerator {
         return checkBox(n, row, col);
     }
 
-    public static boolean checkBox(int n, int row, int col) {
+    public boolean checkBox(int n, int row, int col) {
         int sectionRow = row/3 * 3, sectionCol = col/3 * 3;
         
         for (int i = sectionRow; i < sectionRow + 3; i++) {
@@ -56,6 +56,7 @@ public class SudokuGenerator {
         return board;
     }
 
+    // toString
     public String toString() {
         String result = "";
 
