@@ -46,6 +46,7 @@ public class Game {
     public boolean check() {
         if (masked.isEmpty()) {
             System.out.println("You win!!!");
+            System.out.println(toString());
             return false;
         }
         return true;

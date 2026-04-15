@@ -61,6 +61,6 @@ public class Main {
                 if (game.input(val, row, col)) break;
             }
             System.out.println();
-        }
+        } 
     }
 }
